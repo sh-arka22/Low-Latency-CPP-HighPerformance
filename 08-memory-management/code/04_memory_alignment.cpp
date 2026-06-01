@@ -144,22 +144,22 @@ void show_hft_order() {
 
 // ─── 5. Aligned allocation ────────────────────────────────────────────────────
 
-void show_aligned_alloc() {
-    std::cout << "--- aligned_alloc ---\n";
+// void show_aligned_alloc() {
+//     std::cout << "--- aligned_alloc ---\n";
 
-    // C++17: aligned_alloc
-    void* p = std::aligned_alloc(64, 4096);
-    std::cout << "64-byte-aligned alloc at: " << p
-              << " (addr % 64 = " << reinterpret_cast<uintptr_t>(p) % 64 << ")\n";
-    std::free(p);
+//     // C++17: aligned_alloc
+//     void* p = std::aligned_alloc(64, 4096);
+//     std::cout << "64-byte-aligned alloc at: " << p
+//               << " (addr % 64 = " << reinterpret_cast<uintptr_t>(p) % 64 << ")\n";
+//     std::free(p);
 
-    // C++17: ::operator new with alignment
-    void* q = ::operator new(4096, std::align_val_t{64});
-    std::cout << "operator new(64): at "
-              << q << " (addr % 64 = " << reinterpret_cast<uintptr_t>(q) % 64 << ")\n";
-    ::operator delete(q, std::align_val_t{64});
-    std::cout << "\n";
-}
+//     // C++17: ::operator new with alignment
+//     void* q = ::operator new(4096, std::align_val_t{64});
+//     std::cout << "operator new(64): at "
+//               << q << " (addr % 64 = " << reinterpret_cast<uintptr_t>(q) % 64 << ")\n";
+//     ::operator delete(q, std::align_val_t{64});
+//     std::cout << "\n";
+// }
 
 // ─── 6. assume_aligned (C++20) ───────────────────────────────────────────────
 
@@ -198,7 +198,7 @@ int main() {
     show_alignas();
     show_hardware_interference();
     show_hft_order();
-    show_aligned_alloc();
+    // show_aligned_alloc();
     show_assume_aligned();
 
     std::cout << "=== Rules ===\n"
